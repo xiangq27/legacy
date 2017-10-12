@@ -106,6 +106,10 @@ class Main(KytosNApp):
                         link = {'source': interface.id,
                                 'target': endpoint.value,
                                 'type': 'link'}
+                        link_rev = {'source': endpoint.value,
+                                'target': interface.id,
+                                'type': 'link'}
+
                         host = {"type": 'host',
                                 "id": endpoint.value,
                                 "name": endpoint.value,
@@ -114,6 +118,7 @@ class Main(KytosNApp):
                             nodes.append(host)
                         if not interface.is_link_between_switches():
                             links.append(link)
+                            links.append(link_rev)
                     else:
                         link = {'source': interface.id,
                                 'target': endpoint.id,
